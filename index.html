@@ -1,0 +1,51 @@
+<script src="http://code.jquery.com/jquery-2.1.0.js"></script>
+<script>
+jQuery(function($) {
+  $('body').append('<div id="start">START</div>');
+  $('body').append('<div id="end">END</div>');
+  $('body').append('<div id="slow"></div>');
+  $('body').append('<div id="stoppy"></div>');
+  setInterval(function() {
+    $('#slow').css({left: $('#slow').position().left + 5});
+    if (Math.random() < 0.3) {
+      $('#stoppy').css({left: $('#stoppy').position().left + 50});
+    }
+  }, 100);
+});
+</script>
+
+<style>
+div#start, div#end {
+  height: 50px;
+  width: 600px;
+  -webkit-transform:rotate(90deg);
+  background-color: red;
+  color: white;
+  position: fixed;
+  top: 300px;
+  padding: 10px;
+}
+
+div#start {
+  left:-200px;
+}
+div#end {
+  left:500px;
+}
+
+div#slow, div#stoppy {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  left: 100px;
+  background: black;
+  z-index: 100;
+}
+
+div#slow {
+  top: 200px;
+}
+div#stoppy {
+  top: 400px;
+}
+</style>
