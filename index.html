@@ -1,20 +1,39 @@
 <script src="http://code.jquery.com/jquery-2.1.0.js"></script>
 <script>
 jQuery(function($) {
+  $('body').append('<h1>Confusius Was Wrong</h1>');
   $('body').append('<div id="start">START</div>');
   $('body').append('<div id="end">END</div>');
   $('body').append('<div id="slow"></div>');
   $('body').append('<div id="stoppy"></div>');
   setInterval(function() {
-    $('#slow').css({left: $('#slow').position().left + 5});
-    if (Math.random() < 0.3) {
-      $('#stoppy').css({left: $('#stoppy').position().left + 50});
+    var slow = $('#slow').position().left;
+    var stoppy = $('#stoppy').position().left;
+
+    if (slow < 800 && stoppy < 800) {
+      $('#slow').css({left: $('#slow').position().left + 3});
+      if (Math.random() < 0.15) {
+        $('#stoppy').css({left: $('#stoppy').position().left + 50});
+      }
     }
-  }, 100);
+  }, 50);
 });
 </script>
 
 <style>
+@font-face
+{
+  font-family: shanghai;
+  src: url(shanghai.ttf);
+}
+body {
+  font-family: shanghai;
+}
+
+h1 {
+  margin-left: 300px;
+}
+
 div#start, div#end {
   height: 50px;
   width: 600px;
@@ -22,7 +41,7 @@ div#start, div#end {
   background-color: red;
   color: white;
   position: fixed;
-  top: 300px;
+  top: 350px;
   padding: 10px;
 }
 
